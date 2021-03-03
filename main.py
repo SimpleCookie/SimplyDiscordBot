@@ -2,6 +2,7 @@ import discord
 import os
 import levelUp
 import commands
+import runk
 
 client = discord.Client()
 
@@ -11,20 +12,26 @@ async def on_ready():
 
 @client.event
 async def on_message(event):
+
   if event.author == client.user:
     return
-  await handleMe6(event)
+    
+  elif event.author == "MEE6":
+    await handleMe6(event)
 
-  if event.content.startswith("Simply"):
+  elif event.content.startswith("Simply"):
     msgToSend = "Simply the best"
     await event.channel.send(msgToSend)
     print("Sent msg ", event.channel, "message:", msgToSend)
 
-  await commands.run(event)
+  elif event.content.startswith("!runk"):
+      await runk.run(event)
+
+  else:
+    await commands.run(event)
+
 
 async def handleMe6(event):
-  if event.author == "MEE6":
-    await levelUp.handleLevelUp(event)
-
+  await levelUp.handleLevelUp(event)
 
 client.run(os.getenv("DISCORD_TOKEN"))
