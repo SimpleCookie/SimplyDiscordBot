@@ -11,3 +11,7 @@ CREATE TABLE runk (
     foreign key (username) references user (username),
 );
 
+CREATE TABLE command (
+    phrase varchar(36) not null primary key,
+    msg varchar(256) not null,
+);

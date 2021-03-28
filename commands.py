@@ -1,4 +1,4 @@
-import db
+from db import db
 import runk
 
 dbPrefix = "cmd_"
@@ -7,16 +7,16 @@ async def handleAddCommand(event):
   if event.content.startswith("!addCommand "):
     split = event.content[12:].split(" ", 1)
     phrase = split[0]
-    cmd = split[1]
+    msg = split[1]
     if phrase[0] != "!":
       await event.channel.send("Missing [!phrase]")
       return
 
-    db.saveToDB(dbPrefix, phrase[1:], cmd)
+    db.addCommand(phrase[1:], msg)
     await event.channel.send("Command "+ phrase +" has been registered")
 
 async def handleCommandExec(event):
-  cmd = db.getFromDB(dbPrefix, event.content[1:])
+  cmd = db.getCommand(event.content[1:])
   if not cmd:
     print("Command doesn't exist:", cmd)
     return
@@ -24,12 +24,12 @@ async def handleCommandExec(event):
   await event.channel.send(cmd)
 
 async def handleListCommands(event):
-  cmds = db.listDBWithPrefix()
-  await event.channel.send(cmds)
+  phrases = db.listCommands()
+  await event.channel.send(phrases)
 
 def removeCommand(event):
-  cmd = event.content.split(" ", 1)
-  db.removeCommand(dbPrefix, cmd)
+  phrase = event.content.split(" ", 1)
+  db.delCommand(phrase)
 
 async def run(event):
   try:
