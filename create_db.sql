@@ -1,3 +1,4 @@
+drop database if exists simply_discord_bot;
 create database simply_discord_bot;
 
 CREATE TABLE user (
