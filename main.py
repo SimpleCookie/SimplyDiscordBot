@@ -3,6 +3,7 @@ import os
 import levelUp
 import commands
 import runk
+import asyncio
 
 client = discord.Client()
 
