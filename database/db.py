@@ -1,4 +1,4 @@
-import dbAccessor
+from database import dbAccessor
 from datetime import datetime
 
 __getUserQuery = "SELECT username FROM user WHERE username = (%s)"

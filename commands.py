@@ -1,4 +1,4 @@
-import database.db as db
+from database import db
 import runk
 import asyncio
 
