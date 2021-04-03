@@ -4,6 +4,7 @@ import levelUp
 import commands
 import runk
 import asyncio
+from dotenv import dotenv_values
 
 client = discord.Client()
 config = dotenv_values(".env")
