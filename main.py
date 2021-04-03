@@ -6,6 +6,7 @@ import runk
 import asyncio
 
 client = discord.Client()
+config = dotenv_values(".env")
 
 @client.event
 async def on_ready():
@@ -35,4 +36,4 @@ async def on_message(event):
 async def handleMe6(event):
   await levelUp.handleLevelUp(event)
 
-client.run(os.getenv("DISCORD_TOKEN"))
+client.run(config.DISCORD_TOKEN)
