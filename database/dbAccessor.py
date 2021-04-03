@@ -7,14 +7,14 @@ class db():
     def __init__(self):
         try:
             self._db_connection = mysql.connector.connect(
-                host=config.DB_HOST,
-                user=config.DB_USER,
-                password=config.DB_PASSWORD,
-                database=config.DB_DATABASE
+                host=config.get("DB_HOST"),
+                user=config.get("DB_USER"),
+                password=config.get("DB_PASSWORD"),
+                database=config.get("DB_DATABASE")
             )
             self._db_cursor = self._db_connection.cursor()
         except mysql.connector.Error as err:
-            print('Database connection failed for '+config.DB_USER+'@'+config.DB_HOST+'/'+config.DB_DATABASE)
+            print('Database connection failed for '+config.get("DB_USER")+'@'+config.get("DB_HOST")+'/'+config.get("DB_DATABASE"))
             print("error", err)
             exit()
 
