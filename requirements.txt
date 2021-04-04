@@ -1,4 +1,4 @@
 discord
-mysql-connector-python
+psycopg2
 python-dotenv
 asyncio

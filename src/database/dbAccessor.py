@@ -1,4 +1,4 @@
-import mysql.connector
+import psycopg2
 from dotenv import dotenv_values
 
 config = dotenv_values(".env")
@@ -6,14 +6,14 @@ config = dotenv_values(".env")
 class db():
     def __init__(self):
         try:
-            self._db_connection = mysql.connector.connect(
+            self._db_connection = psycopg2.connect(
                 host=config.get("DB_HOST"),
                 user=config.get("DB_USER"),
                 password=config.get("DB_PASSWORD"),
-                database=config.get("DB_DATABASE")
+                dbname=config.get("DB_DATABASE")
             )
             self._db_cursor = self._db_connection.cursor()
-        except mysql.connector.Error as err:
+        except psycopg2.Error as err:
             print('Database connection failed for '+config.get("DB_USER")+'@'+config.get("DB_HOST")+'/'+config.get("DB_DATABASE"))
             print("error", err)
             exit()
@@ -29,5 +29,6 @@ class db():
             return self._db_cursor.fetchall()
 
     def __del__(self):
+        self._db_cursor.close()
         self._db_connection.close()
         
