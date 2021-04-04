@@ -19,10 +19,10 @@ class db():
             exit()
 
     def query(self, query, params = (), commit = False, single = False):
-        execution = self._db_cursor.execute(query, params)
+        self._db_cursor.execute(query, params)
         if commit == True:
             self._db_connection.commit()
-            return execution
+            return self._db_cursor.rowcount
         if single == True:
             return self._db_cursor.fetchone()
         else:
@@ -30,3 +30,4 @@ class db():
 
     def __del__(self):
         self._db_connection.close()
+        

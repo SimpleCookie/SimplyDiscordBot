@@ -1,4 +1,4 @@
 FROM python:3
-ADD src/* /
-RUN pip install -R requirements
+ADD requirements.txt /
+RUN pip install -r requirements
 CMD [ "python", "./main.py" ]

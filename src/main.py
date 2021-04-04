@@ -39,5 +39,5 @@ async def on_message(event):
 async def handleMe6(event):
   await levelUp.handleLevelUp(event)
 
-db.listCommands()
+print(db.listCommands())
 client.run(config.get("DISCORD_TOKEN"))
