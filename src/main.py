@@ -3,8 +3,13 @@ import os
 import levelUp
 import commands
 import runk
+import asyncio
+from dotenv import dotenv_values
+import logging
+from database import db
 
 client = discord.Client()
+config = dotenv_values(".env")
 
 @client.event
 async def on_ready():
@@ -34,4 +39,4 @@ async def on_message(event):
 async def handleMe6(event):
   await levelUp.handleLevelUp(event)
 
-client.run(os.getenv("DISCORD_TOKEN"))
+client.run(config.get("DISCORD_TOKEN"))
