@@ -15,7 +15,7 @@ async def run(event):
   await sendMsg(event, score, username)  
 
 async def sendMsg(event, data, username):
-  timeMsg = "Runking for the {}:th time\n".format(str(data["count"]))
+  timeMsg = "Runking for the {}:th time\n".format(str(data.get("score")))
   textMsg = "Don't forget to sanitise your hands {}!\nKisses /Heldt!".format(username)
   fullText = "{}{}".format(timeMsg, textMsg)
   print(fullText)
