@@ -9,9 +9,10 @@ async def run(event):
   highscore = db.getRunkHighscore()
   print(highscore)
 
-  result = db.addRunk(username)
-  print("Runks", result)
-  await sendMsg(event, result, username)  
+  db.addRunk(username)
+  score = db.getRunkHighscoreByUsername(username)
+  print("Runks", score)
+  await sendMsg(event, score, username)  
 
 async def sendMsg(event, data, username):
   timeMsg = "Runking for the {}:th time\n".format(str(data["count"]))

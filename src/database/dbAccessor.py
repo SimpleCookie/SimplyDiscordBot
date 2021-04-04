@@ -12,7 +12,9 @@ class db():
                 password=config.get("DB_PASSWORD"),
                 dbname=config.get("DB_DATABASE")
             )
-            self._db_cursor = self._db_connection.cursor()
+            self._db_cursor = self._db_connection.cursor(
+                cursor_factory=psycopg2.extras.NamedTupleCursor
+            )
         except psycopg2.Error as err:
             print('Database connection failed for '+config.get("DB_USER")+'@'+config.get("DB_HOST")+'/'+config.get("DB_DATABASE"))
             print("error", err)
