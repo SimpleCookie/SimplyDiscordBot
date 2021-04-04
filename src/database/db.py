@@ -1,8 +1,8 @@
 from database import dbAccessor
 from datetime import datetime
 
-__getUserQuery = "SELECT username FROM user WHERE username = %s"
-__insertUserQuery = "INSERT INTO user (username) VALUES (%s)"
+__getUserQuery = "SELECT username FROM member WHERE username = %s"
+__insertUserQuery = "INSERT INTO member (username) VALUES (%s)"
 __addRunkQuery = "INSERT INTO runk (username, created) VALUES (%s, %s)"
 __getRunksHighscoreQuery = "SELECT COUNT(created), username FROM runk GROUP BY username"
 __getRunksHighscoreByUserQuery = "SELECT COUNT(created) FROM runk WHERE username = %s"
