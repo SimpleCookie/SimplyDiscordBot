@@ -35,7 +35,7 @@ def addRunk(name):
 
 def getRunkHighscoreByUsername(name):
     connection = dbAccessor.db()
-    return connection.query(__getRunksHighscoreByUserQuery, (name,))
+    return connection.query(__getRunksHighscoreByUserQuery, (name,), single=True)
 
 
 def getRunkHighscore():
