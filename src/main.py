@@ -32,6 +32,9 @@ async def on_message(event):
   elif event.content.startswith("!runk"):
       await runk.run(event)
 
+  elif event.content.startswith("!highscore"):
+      await runk.highscore(event)
+
   else:
     await commands.run(event)
 
